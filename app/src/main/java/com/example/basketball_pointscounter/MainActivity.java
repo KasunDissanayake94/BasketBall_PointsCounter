@@ -1,6 +1,8 @@
 package com.example.basketball_pointscounter;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     int teamA = 0;
     int teamB = 0;
+    private ScoreViewModel mViewModel ;
 
 
 
@@ -17,35 +20,38 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mViewModel = ViewModelProviders.of(this).get(ScoreViewModel.class);
+        displayForTeamA(mViewModel.scoreTeamA);
+        displayForTeamB(mViewModel.scoreTeamB);
     }
 // Team A points
     public void addConversionTeamA(View v) {
-        teamA = teamA + 2;
-        displayForTeamA(teamA);
+        mViewModel.scoreTeamA = mViewModel.scoreTeamA + 2;
+        displayForTeamA(mViewModel.scoreTeamA);
     }
 
     public void addPenaltyTeamA(View v){
-        teamA = teamA + 3;
-        displayForTeamA(teamA);
+        mViewModel.scoreTeamA = mViewModel.scoreTeamA + 3;
+        displayForTeamA(mViewModel.scoreTeamA);
     }
 
     public void addTryTeamA(View v){
-        teamA = teamA + 5;
-        displayForTeamA(teamA);
+        mViewModel.scoreTeamA = mViewModel.scoreTeamA + 5;
+        displayForTeamA(mViewModel.scoreTeamA);
     }
 
 //team B points
     public void addConversionTeamB(View v) {
-        teamB = teamB + 2;
-        displayForTeamB(teamB);
+        mViewModel.scoreTeamB = mViewModel.scoreTeamB + 2;
+        displayForTeamA(mViewModel.scoreTeamB);
     }
     public void addPenaltyTeamB(View v){
-        teamB = teamB + 3;
-        displayForTeamB(teamB);
+        mViewModel.scoreTeamB = mViewModel.scoreTeamB + 3;
+        displayForTeamA(mViewModel.scoreTeamB);
     }
     public void addTryTeamB(View v){
-        teamB = teamB + 5;
-        displayForTeamB(teamB);
+        mViewModel.scoreTeamB = mViewModel.scoreTeamB + 5;
+        displayForTeamA(mViewModel.scoreTeamB);
     }
 
 
